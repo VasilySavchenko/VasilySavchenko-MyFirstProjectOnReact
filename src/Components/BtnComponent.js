@@ -6,7 +6,7 @@ function BtnComponent(props) {
   return (
     <div>
         <button className="stopwatch-btn stopwatch-btn-gre"
-        onClick={props.start}>Start</button> 
+        onClick={props.start }>Start</button> 
       
         <button className="stopwatch-btn stopwatch-btn-red"
                   onClick={props.stop}>Stop</button>
@@ -19,7 +19,7 @@ function BtnComponent(props) {
                   onClick={props.reset}>Reset</button>
 
           <button className="stopwatch-btn stopwatch-btn-purpl"
-                  onDoubleClick={props.wait}>wait</button>
+                  onDoubleClick={props.stop}>Wait</button>
         </div>
 
     </div>

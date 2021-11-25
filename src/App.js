@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import DisplayComponent from './Components/DisplayComponent';
 import BtnComponent from './Components/BtnComponent';
@@ -5,18 +6,19 @@ import './App.css';
 
 function App() {
   const [time, setTime] = useState({ seconds:0,minutes:0,hours:0});
-  const [interval, setInterval] = useState();
+  const [interv, setInterv] = useState();
 
-  let  updatedSeconds = time.seconds
+
+  const start = () => {
+    run();
+  
+    setInterv(setInterval(run, 10));
+  };
+
+let  updatedSeconds = time.seconds
   let updatedMinutes = time.minutes
   let updatedHours = time.hours;
 
- 
-
-   const start = () => {
-    run();
-    setInterval(setInterval(run, 1));
-  };
 
   const run = () => {
     if(updatedSeconds === 60){
@@ -38,23 +40,19 @@ function App() {
   };
 
   const stop = () => {
-    clearInterval(interval);
-    
+    clearInterval(interv);
   };
+
 
   const reset = () => {
-    clearInterval(interval);
-    
-    setTime({ seconds:0, minutes:0, hours:0})
+    clearInterval(interv);
+ 
+    setTime( {seconds:0, minutes:0, hours:0})
   };
 
-  const wait = ()=> {
-    clearInterval(interval);
- 
-
-  }
-
   const resume = () => start();
+
+  
 
 
   return (
@@ -62,7 +60,7 @@ function App() {
      <div className="clock-holder">
           <div className="stopwatch">
                <DisplayComponent time={time}/>
-               <BtnComponent resume={resume} reset={reset} stop={stop} start={start} wait = {wait}/>
+               <BtnComponent  resume={resume} reset={reset} stop={stop} start={start}/>
           </div>
      </div>
     </div>
